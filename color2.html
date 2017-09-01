@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title></title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="css/cube.css"/>
+    <style type="text/css">
+
+    </style>
+    <script type="text/javascript">
+    	
+   		document.addEventListener('plusready', function(){
+   			//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+   			
+   		});
+   		
+    </script>
+</head>
+<body>
+	<body>
+	<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="index.html">记忆</a>
+    </div>
+    <div class="navbar-header">
+        <a class="navbar-brand" href="color2.html">棱角观察</a>
+    </div>
+    
+    </div>
+</nav>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<p> 
+				<button id="edge-btn" type="button" class="btn btn-success">随机棱块</button>
+			</p>
+			<p> 
+				<button id="angle-btn" type="button" class="btn btn-success">随机角块</button>
+			</p>
+
+			
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12"> 
+			<div id="pic-result">
+<!--				<section class="cube-container">
+				  <div  class="cube angle">
+				    <figure class="front"></figure>
+				    <figure class="back"></figure>
+				    <figure class="right"></figure>
+				    <figure class="left"></figure>
+				    <figure class="top"></figure>
+				    <figure class="bottom"></figure>
+				  </div>
+				</section>   --> 
+ 
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="js/jquery.js" ></script>
+<script type="text/javascript" src="js/TxtService.js" ></script>
+<script type="text/javascript" src="js/magiccube.js" ></script>
+<script>
+	var magiccube=new MagicCube();
+	$(function(){
+		$("#edge-btn").click(function(){
+			var html=magiccube.randomEdgeRender();
+			$("#pic-result").html(html)
+		})
+		$("#angle-btn").click(function(){
+			var html=magiccube.randomAngleRender();
+			$("#pic-result").html(html)
+		})
+	})
+	
+	
+</script>
+</html>

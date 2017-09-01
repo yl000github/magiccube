@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title></title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <style type="text/css">
+    	.txt{
+    		font-size: 25px;
+    	}
+    	.pic{
+    		width:100px;
+    		height:100px;
+    	}
+    </style>
+    <script type="text/javascript">
+    	
+   		document.addEventListener('plusready', function(){
+   			//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+   			
+   		});
+   		
+    </script>
+</head>
+<body>
+	<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="index.html">记忆</a>
+    </div>
+    <div class="navbar-header">
+        <a class="navbar-brand" href="color2.html">棱角观察</a>
+    </div>
+    
+    </div>
+</nav>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<p> 
+				<button id="num15-btn" type="button" class="btn btn-success">点击生成15位随机数字</button>
+			</p>
+			<p>
+				<button id="num30-btn" type="button" class="btn btn-danger">点击生成30位随机数字</button>
+			</p>
+			<p>
+				<button id="openPicTip" type="button" class="btn btn-warning">打开图片提示</button>
+			</p>
+			
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<p id="txt-result" class="txt"></p>
+			
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12"> 
+			<div id="pic-result">
+				
+				
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="js/jquery.js" ></script>
+<script>
+	var _arr;
+	$(function(){
+		console.log(11);
+		$("#num15-btn").click(function(){
+			process(15)
+		})
+		$("#num30-btn").click(function(){
+			process(30)
+		})
+		
+		$("#openPicTip").click(function(){
+			renderPic() 
+		})
+		
+		
+		function process(num){
+			var arr=renderTxt(num)
+		//	renderPic(arr)
+		}
+		function renderTxt(num){
+			var arr=[];
+			for (var i=0;i<num;i++) {
+				var r=parseInt(Math.random()*24)+1;
+				arr.push(r);
+			}
+			var txt=arr.map(function(item){
+				if(item<10){
+					return "0"+item;
+				}else{
+					return String(item);
+				}
+			}).join(" ").toString();
+			$("#txt-result").html(txt);
+			_arr=arr;
+			return arr; 
+		}
+		function renderPic(arr){
+			if(!arr){
+				arr=_arr;
+			}
+			var pictpl='<img class="pic" src="img/{1}.png" />';
+			var picHtml=arr.map(function(item){
+				var h=pictpl.replace("{1}",item);
+				return h;
+			}).join();
+			$("#pic-result").html(picHtml);
+		}
+	})
+	
+	
+</script>
+</html>
